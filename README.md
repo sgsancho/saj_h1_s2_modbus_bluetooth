@@ -6,11 +6,11 @@ Este trabajo ha sido gracias a la colaboración del grupo de Telegram https://t.
 
 - Ver [Releases](https://github.com/sgsancho/saj_h1_s2_modbus_bluetooth/releases)
 
-- Ver [Instrucciones](https://github.com/sgsancho/documentacion/saj_h1_s2_modbus_bluetooth/instrucciones_saj_h1s2_modbus.pdf)
+- Ver [Instrucciones](https://github.com/sgsancho/saj_h1_s2_modbus_bluetooth/blob/main/documentacion/instrucciones_saj_h1s2_modbus.pdf)
 
-- Ver [Modbus EXCEL](https://github.com/sgsancho/documentacion/SAJ_Modbus_Communication_Protocol_2020.xlsx)
+- Ver [Modbus EXCEL](https://github.com/sgsancho/saj_h1_s2_modbus_bluetooth/blob/main/documentacion/SAJ_Modbus_Communication_Protocol_2020.xlsx)
 
-- Ver [Modbus PDF](https://github.com/sgsancho/saj_h1_s2_modbus_bluetooth/instrucciones_saj_h1s2_modbus.pdf)
+- Ver [Modbus PDF](https://github.com/sgsancho/saj_h1_s2_modbus_bluetooth/blob/main/documentacion/instrucciones_saj_h1s2_modbus.pdf)
 
 
 ## MIT License
