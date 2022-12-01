@@ -1,33 +1,17 @@
-# EspBlufiForAndroid
-This is a demo app to control the ESP device which run [BluFi](https://github.com/espressif/esp-idf/tree/master/examples/bluetooth/blufi)
+Esta aplicación se ha desarrollado para facilitar el acceso a los datos a tiempo real por modbus del Inversor SAJ H1 S2 a través de la conexión Bluetooth sin necesidad de retirar el Dongle del puerto RS232
 
-## Lib Source Code
-- See [lib-blufi](lib-blufi)
+Este trabajo ha sido gracias a la colaboración del grupo de Telegram https://t.me/saj_nooficialoriginal. No es una aplicación oficial y podría dejar de funcionar en cualquier momento.
 
-## How to Import
-- Add this in your root `build.gradle` at the end of repositories:
-  ```
-  allprojects {
-      repositories {
-          ...
-          maven { url 'https://jitpack.io' }
-      }
-  }
-   ```
-- And add a dependency code to your app module's `build.gradle` file.
-  ```
-  implementation 'com.github.EspressifApp:lib-blufi-android:2.3.7'
-  ```
+Úsala bajo tu propia responsabilidad. Desconocemos si afecta en algún sentido al rendimiento y fiabilidad de su instalación fotovoltaica
 
-## ESPRSSIF MIT License
-- See [License](LICENSE)
+- Ver [Releases](https://github.com/sgsancho/saj_h1_s2_modbus_bluetooth/releases)
 
-## Development Documents
-- See [Doc](doc/Introduction_to_the_EspBlufi_API_Interface_for_Android__en.md)
+- Ver [Instrucciones](https://github.com/sgsancho/documentacion/saj_h1_s2_modbus_bluetooth/instrucciones_saj_h1s2_modbus.pdf)
 
-## Release APKS
-- See [Releases](https://github.com/EspressifApp/EspBlufiForAndroid/releases)
+- Ver [Modbus EXCEL](https://github.com/sgsancho/documentacion/SAJ_Modbus_Communication_Protocol_2020.xlsx)
 
-## Update Log
-- App [Log](log/updatelog-en.md)
-- Lib [Log](lib-blufi/log/changelog_en.md)
+- Ver [Modbus PDF](https://github.com/sgsancho/saj_h1_s2_modbus_bluetooth/instrucciones_saj_h1s2_modbus.pdf)
+
+
+## MIT License
+- Ver [License](LICENSE)
