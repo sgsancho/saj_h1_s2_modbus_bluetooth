@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SAJ H1 S2 modbus BT</string>
+
+    <string name="string_unknown">未知</string>
+
+    <string name="main_title">SAJ H1 S2 modbus BT</string>
+    <string name="main_bt_disable_msg">蓝牙不可用</string>
+    <string name="main_location_disable_msg">位置信息(GPS)不可用</string>
+    <string name="main_menu_settings">设置</string>
+
+    <string name="blufi_function_connect">连接</string>
+    <string name="blufi_function_connect_msg">连接设备</string>
+    <string name="blufi_function_disconnect">断开</string>
+    <string name="blufi_function_disconnect_msg">与设备断开连接</string>
+    <string name="blufi_function_security">加密</string>
+    <string name="blufi_function_security_msg">与设备加密通信</string>
+    <string name="blufi_function_version">版本</string>
+    <string name="blufi_function_version_msg">获取设备版本</string>
+    <string name="blufi_function_device_status">状态</string>
+    <string name="blufi_function_device_status_msg">获取设备当前状态</string>
+    <string name="blufi_function_configure">配网</string>
+    <string name="blufi_function_configure_msg">配置设备模式</string>
+    <string name="blufi_function_device_scan">扫描</string>
+    <string name="blufi_function_device_scan_msg">获取设备扫描到的 Wi-Fi 列表</string>
+    <string name="blufi_function_custom">自定义</string>
+    <string name="blufi_function_saj">SAJ</string>
+    <string name="blufi_function_custom_msg">发送自定义数据给设备</string>
+    <string name="blufi_function_custom_saj">Enviando saj</string>
+    <string name="blufi_custom_dialog_title">输入自定义文本</string>
+
+    <string name="configure_title">配置</string>
+    <string name="configure_sel_device_mode">选择设备模式</string>
+    <string name="configure_softap_security">SoftAP 加密</string>
+    <string name="configure_softap_ssid">SoftAP ssid</string>
+    <string name="configure_softap_password">SoftAP 密码</string>
+    <string name="configure_softap_password_error">SoftAP 密码过短</string>
+    <string name="configure_softap_channel">SoftAP 信道</string>
+    <string name="configure_softap_max_connection">SoftAP 最大连接数</string>
+    <string name="configure_station_sel_wifi">选择 Wi-Fi</string>
+    <string name="configure_station_ssid">Wi-Fi ssid</string>
+    <string name="configure_station_ssid_error">Wi-Fi ssid 不能为空</string>
+    <string name="configure_station_wifi_5g_error">设备不支持 5G Wi-Fi</string>
+    <string name="configure_station_wifi_5g_dialog_message">设备不支持 5G Wi-Fi, 继续配网?</string>
+    <string name="configure_station_wifi_5g_dialog_continue">继续</string>
+    <string name="configure_station_wifi_5g_dialog_cancel">取消</string>
+    <string name="configure_station_password">Wi-Fi 密码</string>
+    <string name="configure_station_wifi_scanning">正在扫描 Wi-Fi…</string>
+    <string name="configure_station_wifi_scanning_nothing">没有扫到 Wi-Fi</string>
+    <string name="configure_wifi_disable_msg">Wi-Fi 不可用</string>
+    <string name="configure_wifi_no_selected_msg">没有选择 Wi-Fi</string>
+
+    <string name="settings_title">设置</string>
+    <string name="settings_category_blufi_key">setting_category_blufi</string>
+    <string name="settings_category_blufi_title">Identificador Dongle BT</string>
+    <string name="settings_telegram_key">Telegram</string>
+    <string name="settings_telegram_title">Información</string>
+    <string name="settings_pdf_key">Instrucciones</string>
+    <string name="settings_pdf_title">Instrucciones</string>
+    <string name="settings_mtu_length_key">settings_key_mtu_length</string>
+    <string name="settings_mtu_length_title">设置 mtu 长度</string>
+    <string name="settings_mtu_length_hint">设置一个大于 15 的数</string>
+    <string name="settings_ble_prefix_key">settings_key_ble_prefix</string>
+    <string name="settings_ble_prefix_title">BLE 设备过滤</string>
+    <string name="settings_ble_prefix_hint">设备名前缀</string>
+    <string name="settings_category_version_title">版本</string>
+    <string name="settings_version_key">settings_key_version</string>
+    <string name="settings_version_title">APP 版本</string>
+    <string name="settings_blufi_version_key">settings_key_blufi_version</string>
+    <string name="settings_blufi_version_title">BluFi 库版本</string>
+    <string name="settings_upgrade_check_key">settings_upgrade_check</string>
+    <string name="settings_upgrade_check_title">检查更新</string>
+    <string name="settings_upgrade_check_failed">获取最新版本信息失败</string>
+    <string name="settings_upgrade_check_not_found">没有找到更新版本</string>
+    <string name="settings_upgrade_check_current_latest">当前APP已经是最新版本</string>
+    <string name="settings_upgrade_check_disciver_new">发现新版本APP, 点击开始下载</string>
+    <string name="settings_upgrade_dialog_title">发现新版本</string>
+    <string name="settings_upgrade_dialog_message">点击[升级]下载APK</string>
+    <string name="settings_upgrade_dialog_upgrade">升级</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
+</resources>
