@@ -34,7 +34,12 @@ import com.sajh1s2.espblufi.databinding.SajMessageItemBinding;
 import com.sajh1s2.espblufi.saj.BluFiUtils;
 import com.sajh1s2.espblufi.saj.HexUtil;
 import com.sajh1s2.espblufi.saj.LocalUtils;
+import com.sajh1s2.espblufi.tcpserver.MessageDebugEvent;
 import com.sajh1s2.espblufi.tcpserver.ServerService;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -116,21 +121,20 @@ public class SajActivity extends BaseActivity {
     @Override
     public void onStart() {
         super.onStart();
-        //EventBus.getDefault().register(this);
-        //System.out.println("0. pilone: EventBus register");
+        EventBus.getDefault().register(this);
 
     }
 
     @Override
     public void onStop() {
         super.onStop();
-        //EventBus.getDefault().unregister(this);
-        //System.out.println("0. pilone: EventBus unregister");
-
+        EventBus.getDefault().unregister(this);
     }
 
-
-
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onMessageDebugEvent(MessageDebugEvent messageDebug) {
+        //Toast.makeText(getApplicationContext(), messageDebug.getMessageDebug(), Toast.LENGTH_LONG).show();
+    }
 
     @Override
     protected void onDestroy() {
@@ -442,7 +446,6 @@ public class SajActivity extends BaseActivity {
         public void onPostCustomDataResult(BlufiClient client, int status, byte[] data) {
             String dataStr = gettStringTrama(data);
             String format = "Post data %s %s";
-            //Toast.makeText(getApplicationContext(), "pilone: onPostCustomDataResult", Toast.LENGTH_LONG).show();
             if (status == STATUS_SUCCESS) {
                 updateMessage(String.format(format, dataStr, "complete"), false);
             } else {
@@ -469,7 +472,7 @@ public class SajActivity extends BaseActivity {
 
         @Override
         public void onReceiveCustomData(BlufiClient client, int status, byte[] data) {
-            System.out.println("5. pilone: onReceiveCustomData");
+            debug("5. pilone: onReceiveCustomData");
             if (status == STATUS_SUCCESS) {
 
                 try {
@@ -503,7 +506,7 @@ public class SajActivity extends BaseActivity {
                         dataoutputStream.write(combined); //sending response for client socket request
                         dataoutputStream.flush();
                         dataoutputStream.close();
-                        System.out.println("6. pilone: onReceiveCustomData, response -> " + gettStringTrama(combined));
+                        debug("6. pilone: onReceiveCustomData, response -> " + gettStringTrama(combined));
 
                     }
 
@@ -511,7 +514,7 @@ public class SajActivity extends BaseActivity {
                     e.printStackTrace();
                 }
                 catch(IllegalArgumentException i){
-                    System.out.println("pilone: PETÓ" + i);
+                    debug("pilone: PETÓ" + i);
                 }
 
             } else {
@@ -535,10 +538,17 @@ public class SajActivity extends BaseActivity {
      */
 
     public static void postSajData(String modbus_message) {
-        System.out.println("4. pilone: postSajData");
+        debug("4. pilone: postSajData");
         byte[] data = HexUtil.hexStringToBytes(BluFiUtils.exchangeHasCrcModBusData(1, HexUtil.formatHexString(LocalUtils.sendData(modbus_message))));
         mBlufiClient.postCustomData(data);
     }
+
+    public static void debug(String message) {
+        EventBus.getDefault().postSticky(new MessageDebugEvent(message));
+        System.out.println(message);
+    }
+
+
 
 /*
     private class BlufiButtonListener implements View.OnClickListener, View.OnLongClickListener {

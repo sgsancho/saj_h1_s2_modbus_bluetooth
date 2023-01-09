@@ -24,6 +24,4 @@ public class MultiThreads extends Thread {
 			e.printStackTrace();
 		}
 	}
-	
-	
 }

@@ -27,6 +27,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.sajh1s2.espblufi.R;
 import com.sajh1s2.espblufi.app.BlufiApp;
 import com.sajh1s2.espblufi.app.BlufiLog;
@@ -79,6 +80,8 @@ public class MainActivity extends AppCompatActivity {
 
     public android.app.AlertDialog dialog;
 
+    private FirebaseAnalytics mFirebaseAnalytics;
+
     private String TAG = "pilone";
 
     @Override
@@ -87,6 +90,8 @@ public class MainActivity extends AppCompatActivity {
         mBinding = MainActivityBinding.inflate(getLayoutInflater());
         setContentView(mBinding.getRoot());
         setSupportActionBar(mBinding.toolbar);
+
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
         mBlufiFilter = (String) BlufiApp.getInstance().settingsGet(SettingsConstants.PREF_SETTINGS_KEY_BLE_PREFIX,
                 BlufiConstants.BLUFI_PREFIX);

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Binder;
 import android.os.IBinder;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.sajh1s2.espblufi.ui.SajActivity;
 
@@ -43,7 +44,7 @@ public class ServerService extends Service {
 	public void onCreate() {
 		super.onCreate();
 		EventBus.getDefault().register(this);
-		System.out.println("0. pilone: EventBus register Service");
+		debug("0. pilone: EventBus register Service");
 	}
 
 	@Override
@@ -51,7 +52,7 @@ public class ServerService extends Service {
 
 		super.onDestroy();
 		EventBus.getDefault().unregister(this);
-		System.out.println("0. pilone: EventBus unregister Service");
+		debug("0. pilone: EventBus unregister Service");
 	}
 /*
 	public void onEvent(SetSongList event){
@@ -60,12 +61,17 @@ public class ServerService extends Service {
 
 	@Subscribe(threadMode = ThreadMode.MAIN)
 	public void onMessageEvent(MessageEvent event) {
-		System.out.println("3. pilone: onMessageEvent ThreadMode.MAIN");
+		debug("3. pilone: onMessageEvent ThreadMode.MAIN");
 		//Toast.makeText(getApplicationContext(), "Nuevo mensaje recibido: " + event.getMessageModBus(), Toast.LENGTH_LONG).show();
 		SajActivity.socket = event.getSocket();
 		SajActivity.modbus_message = event.getMessageModBus();
 		SajActivity.modbus_frame_response = event.getFrameResponseModBus();
 		postSajData(event.getMessageModBus());
+	}
+
+	public void debug(String message) {
+		EventBus.getDefault().postSticky(new MessageDebugEvent(message));
+		System.out.println(message);
 	}
 
 	@Override

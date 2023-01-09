@@ -3,8 +3,6 @@ package com.sajh1s2.espblufi.tcpserver;
 import java.io.DataInputStream;
 import java.io.IOException;
 import java.net.Socket;
-
-
 import android.util.Log;
 
 import org.greenrobot.eventbus.EventBus;
@@ -25,6 +23,12 @@ public class SocketServerReplyThread extends Thread{
 	private String modbus_function_code = "";
 	private String modbus_address = "";
 	private String modbus_number_registers = "";
+
+	public void debug(String message) {
+		EventBus.getDefault().postSticky(new MessageDebugEvent(message));
+		System.out.println(message);
+	}
+
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub
@@ -45,10 +49,10 @@ public class SocketServerReplyThread extends Thread{
 					resultBuff = tbuff; // call the temp buffer as your result buff
 					String trama = gettStringTrama(resultBuff);
 
-					System.out.println("0. pilone: resultBuff length -> " + resultBuff.length + " : trama -> " + trama );
+					debug("0. pilone: resultBuff length -> " + resultBuff.length + " : trama -> " + trama );
 
 					if(resultBuff.length!=12 && resultBuff.length!=8) {
-						System.out.println("1. pilone: error en la trama recibida" );
+						debug("1. pilone: error en la trama recibida" );
 					}
 					else {
 
@@ -64,7 +68,7 @@ public class SocketServerReplyThread extends Thread{
 								modbus_number_registers = String.format("%02X%02X", (byte) resultBuff[4], (byte) resultBuff[5]);
 							}
 							else {
-								System.out.println("1. pilone: error mensaje sensores -> " + resultBuff.length + " : " + trama );
+								debug("1. pilone: error mensaje sensores -> " + resultBuff.length + " : " + trama );
 							}
 						}
 						else {
@@ -90,10 +94,10 @@ public class SocketServerReplyThread extends Thread{
 						byte[] total_registros_hex = intToByteArray(total_registros + 3);
 
 						String modbus_message_final = (modbus_unit_id + modbus_function_code + modbus_address + modbus_number_registers).toUpperCase();
-						System.out.println("1. pilone: modbus_message_final -> " + modbus_message_final);
+						debug("1. pilone: modbus_message_final -> " + modbus_message_final);
 
 						byte[] modbus_frame_response = {resultBuff[0], resultBuff[1], resultBuff[2], resultBuff[3], total_registros_hex[1], total_registros_hex[0], resultBuff[6], resultBuff[7]};
-						System.out.println("2. pilone: modbus_frame_response -> " + gettStringTrama(modbus_frame_response));
+						debug("2. pilone: modbus_frame_response -> " + gettStringTrama(modbus_frame_response));
 						/*
 						0001: Transaction identifier
 						0000: Protocol identifier
@@ -154,12 +158,8 @@ public class SocketServerReplyThread extends Thread{
 		ret[1] = (byte) ((a >> 8) & 0xFF);
 		return ret;
 	}
-	/*@Subscribe(threadMode = ThreadMode.ASYNC)
-	public void onMessageResponseEvent(MessageResponseEvent event) throws IOException {
-		byte[] response = {72, 49, 83, 50, 54, 48, 50, 74, 50, 49, 53, 49, 69, 48, 57, 51, 48, 53, 0, 0};
 
-		//EventBus.getDefault().postSticky(new MessageResponseEvent(response));
-	}*/
+
 }
 
 
