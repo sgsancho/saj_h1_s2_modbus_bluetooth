@@ -6,13 +6,13 @@ import android.widget.EditText;
 import android.widget.TextView;
 import androidx.exifinterface.media.ExifInterface;
 
+import java.io.ByteArrayOutputStream;
 import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
-import org.apache.http.util.ByteArrayBuffer;
 
 /* loaded from: classes3.dex */
 public class LocalUtils {
@@ -73,23 +73,24 @@ public class LocalUtils {
             AppLog.e("data:" + str + ",send data error");
             return new byte[0];
         }
-        ByteArrayBuffer byteArrayBuffer = new ByteArrayBuffer(str.length() / 2);
+        ByteArrayOutputStream byteArrayBuffer = new ByteArrayOutputStream(str.length() / 2);
+
         int i2 = 0;
         while (i2 < str.length()) {
             if (str.charAt(i2) != ' ') {
                 int i3 = i2 + 2;
-                byteArrayBuffer.append(hexStrToByteArray(str.substring(i2, i3)));
+                byteArrayBuffer.write(hexStrToByteArray(str.substring(i2, i3)));
                 i2 = i3;
             } else {
                 i2++;
             }
         }
-        String str2 = str + CRC16Utils.CRC16_Check(byteArrayBuffer.toByteArray(), byteArrayBuffer.length()).toUpperCase();
-        byteArrayBuffer.clear();
+        String str2 = str + CRC16Utils.CRC16_Check(byteArrayBuffer.toByteArray(), byteArrayBuffer.size()).toUpperCase();
+        byteArrayBuffer.reset();
         while (i < str2.length()) {
             if (str2.charAt(i) != ' ') {
                 int i4 = i + 2;
-                byteArrayBuffer.append(hexStrToByteArray(str2.substring(i, i4)));
+                byteArrayBuffer.write(hexStrToByteArray(str2.substring(i, i4)));
                 i = i4;
             } else {
                 i++;
@@ -863,24 +864,24 @@ public class LocalUtils {
             AppLog.d("send data error");
             return new byte[0];
         }
-        ByteArrayBuffer byteArrayBuffer = new ByteArrayBuffer(str.length() / 2);
+        ByteArrayOutputStream byteArrayBuffer = new ByteArrayOutputStream(str.length() / 2);
         int i2 = 0;
         while (i2 < str.length()) {
             if (str.charAt(i2) != ' ') {
                 int i3 = i2 + 2;
-                byteArrayBuffer.append(hexStrToByteArray(str.substring(i2, i3)));
+                byteArrayBuffer.write(hexStrToByteArray(str.substring(i2, i3)));
                 i2 = i3;
             } else {
                 i2++;
             }
         }
-        String str2 = str + CRC16_Check(byteArrayBuffer.toByteArray(), byteArrayBuffer.length()).toUpperCase();
+        String str2 = str + CRC16_Check(byteArrayBuffer.toByteArray(), byteArrayBuffer.size()).toUpperCase();
         AppLog.d("发送完整的指令：" + str2);
-        byteArrayBuffer.clear();
+        byteArrayBuffer.reset();
         while (i < str2.length()) {
             if (str2.charAt(i) != ' ') {
                 int i4 = i + 2;
-                byteArrayBuffer.append(hexStrToByteArray(str2.substring(i, i4)));
+                byteArrayBuffer.write(hexStrToByteArray(str2.substring(i, i4)));
                 i = i4;
             } else {
                 i++;

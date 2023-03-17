@@ -1,6 +1,6 @@
 package com.sajh1s2.espblufi.saj;
 
-import org.apache.http.util.ByteArrayBuffer;
+import java.io.ByteArrayOutputStream;
 
 /* loaded from: classes3.dex */
 public class BluFiUtils {
@@ -65,18 +65,18 @@ public class BluFiUtils {
             AppLog.e("data:" + str + ",send data error");
             return null;
         }
-        ByteArrayBuffer byteArrayBuffer = new ByteArrayBuffer(str.length() / 2);
+        ByteArrayOutputStream byteArrayBuffer = new ByteArrayOutputStream(str.length() / 2);
         int i = 0;
         while (i < str.length()) {
             if (str.charAt(i) != ' ') {
                 int i2 = i + 2;
-                byteArrayBuffer.append(hexStrToByteArray(str.substring(i, i2)));
+                byteArrayBuffer.write(hexStrToByteArray(str.substring(i, i2)));
                 i = i2;
             } else {
                 i++;
             }
         }
-        return str + CRC16Utils.CRC16_Check(byteArrayBuffer.toByteArray(), byteArrayBuffer.length()).toUpperCase();
+        return str + CRC16Utils.CRC16_Check(byteArrayBuffer.toByteArray(), byteArrayBuffer.size()).toUpperCase();
     }
 
     private static byte hexStrToByteArray(String str) {

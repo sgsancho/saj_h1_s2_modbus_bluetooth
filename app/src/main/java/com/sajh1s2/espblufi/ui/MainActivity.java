@@ -35,6 +35,9 @@ import com.sajh1s2.espblufi.constants.BlufiConstants;
 import com.sajh1s2.espblufi.constants.SettingsConstants;
 import com.sajh1s2.espblufi.databinding.MainActivityBinding;
 import com.sajh1s2.espblufi.databinding.MainBleItemBinding;
+import com.sajh1s2.espblufi.saj.BluFiUtils;
+import com.sajh1s2.espblufi.saj.HexUtil;
+import com.sajh1s2.espblufi.saj.LocalUtils;
 
 import java.util.ArrayList;
 import java.util.Collections;

@@ -134,6 +134,7 @@ public class SajActivity extends BaseActivity {
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onMessageDebugEvent(MessageDebugEvent messageDebug) {
         //Toast.makeText(getApplicationContext(), messageDebug.getMessageDebug(), Toast.LENGTH_LONG).show();
+        //updateMessage(messageDebug.getMessageDebug(), false);
     }
 
     @Override
@@ -504,8 +505,8 @@ public class SajActivity extends BaseActivity {
                         }
 
                         dataoutputStream.write(combined); //sending response for client socket request
-                        dataoutputStream.flush();
-                        dataoutputStream.close();
+                        //dataoutputStream.flush();
+                        //dataoutputStream.close();
                         debug("6. pilone: onReceiveCustomData, response -> " + gettStringTrama(combined));
 
                     }
