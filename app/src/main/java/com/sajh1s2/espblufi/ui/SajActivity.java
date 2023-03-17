@@ -505,8 +505,8 @@ public class SajActivity extends BaseActivity {
                         }
 
                         dataoutputStream.write(combined); //sending response for client socket request
-                        //dataoutputStream.flush();
-                        //dataoutputStream.close();
+                        dataoutputStream.flush();
+                        dataoutputStream.close();
                         debug("6. pilone: onReceiveCustomData, response -> " + gettStringTrama(combined));
 
                     }
